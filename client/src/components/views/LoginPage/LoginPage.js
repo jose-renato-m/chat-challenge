@@ -45,7 +45,6 @@ function LoginPage(props) {
           dispatch(loginUser(dataToSubmit))
             .then(response => {
               if (response.payload.loginSuccess) {
-                window.localStorage.setItem('userId', response.payload.userId);
                 if (rememberMe === true) {
                   window.localStorage.setItem('rememberMe', values.id);
                 } else {
@@ -125,7 +124,7 @@ function LoginPage(props) {
               )}
 
               <Form.Item>
-                <Checkbox id="rememberMe" onChange={handleRememberMe} checked={rememberMe} >Remember me</Checkbox>
+                <Checkbox id="rememberMe" onChange={handleRememberMe} checked={rememberMe}>Remember me</Checkbox>
                 <a className="login-form-forgot" href="/reset_user" style={{ float: 'right' }}>
                   forgot password
                   </a>
@@ -145,5 +144,3 @@ function LoginPage(props) {
 };
 
 export default withRouter(LoginPage);
-
-

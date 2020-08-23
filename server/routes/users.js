@@ -27,6 +27,7 @@ router.post("/register", (req, res) => {
 
     user.save((err, doc) => {
         if (err) return res.json({ success: false, err });
+        // sendEmail(doc.email, doc.name, null, "welcome");
         return res.status(200).json({
             success: true
         });
@@ -52,7 +53,7 @@ router.post("/login", (req, res) => {
                     .cookie("w_auth", user.token)
                     .status(200)
                     .json({
-                        loginSuccess: true, userId: user._id
+                        loginSuccess: true
                     });
             });
         });
