@@ -9,6 +9,7 @@ import ChatCard from './Sections/ChatCard';
 export class ChatPage extends Component {
   state = {
     chatMessage: "",
+    chats: [],
   }
 
   componentDidMount() {
@@ -19,7 +20,10 @@ export class ChatPage extends Component {
     this.socket = io(server);
 
     this.socket.on("Output Chat Message", messageFromBackEnd => {
-      console.log(messageFromBackEnd)
+      console.log('from socket', messageFromBackEnd)
+      this.setState({
+        chats: [...this.state.chats,...messageFromBackEnd]
+      })
       this.props.dispatch(afterPostMessage(messageFromBackEnd));
     })
   }
@@ -32,9 +36,12 @@ export class ChatPage extends Component {
 
   renderCards = () => 
     this.props.chats.chats 
-    && this.props.chats.chats.map((chat) => (
+    && this.state.chats.map((chat) => {
+      console.log('chat map',chat)
+      return (
         <ChatCard key={chat._id} {...chat} />
-      ));  
+      )
+    });
 
   submitChatMessage = (e) => {
     e.preventDefault();
@@ -66,9 +73,11 @@ export class ChatPage extends Component {
 
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>          
           <div className="infinite-container" style={{ height: '500px' }}>
-            {this.props.chats && (              
-              this.renderCards()
-            )}
+            {this.state.chats.map((chat) => {
+                return (
+                  <ChatCard key={chat._id} {...chat} />
+                )
+              })}
             <div
               ref={el => {
                 this.messagesEnd = el;
