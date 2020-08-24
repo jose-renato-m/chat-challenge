@@ -70,12 +70,10 @@ function LoginPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
         return (
           <div className="app">
@@ -87,7 +85,7 @@ function LoginPage(props) {
                 <Input
                   id="email"
                   prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Enter your email"
+                  placeholder="Digite seu e-mail"
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -105,7 +103,7 @@ function LoginPage(props) {
                 <Input
                   id="password"
                   prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Enter your password"
+                  placeholder="Digite sua senha"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -133,7 +131,7 @@ function LoginPage(props) {
                     Log in
                 </Button>
                 </div>
-                Or <a href="/register">register now!</a>
+                Ou <a href="/register">cadastre-se!</a>
               </Form.Item>
             </form>
           </div>

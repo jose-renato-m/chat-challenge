@@ -89,22 +89,20 @@ function RegisterPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
         return (
           <div className="app">
             <h2>Sign up</h2>
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit}>
 
-              <Form.Item required label="Name">
+              <Form.Item required label="Nome">
                 <Input
                   id="name"
-                  placeholder="Enter your name"
+                  placeholder="Digite o seu nome"
                   type="text"
                   value={values.name}
                   onChange={handleChange}
@@ -118,10 +116,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Last Name">
+              <Form.Item required label="Sobrenome">
                 <Input
                   id="lastName"
-                  placeholder="Enter your Last Name"
+                  placeholder="Digite o seu sobrenome"
                   type="text"
                   value={values.lastName}
                   onChange={handleChange}
@@ -135,10 +133,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Email" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
+              <Form.Item required label="E-mail" hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                 <Input
                   id="email"
-                  placeholder="Enter your Email"
+                  placeholder="Digite o seu e-mail"
                   type="email"
                   value={values.email}
                   onChange={handleChange}
@@ -152,10 +150,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Password" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+              <Form.Item required label="Senha" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
                 <Input
                   id="password"
-                  placeholder="Enter your password"
+                  placeholder="Cadastre sua senha"
                   type="password"
                   value={values.password}
                   onChange={handleChange}
@@ -169,10 +167,10 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Confirm" hasFeedback>
+              <Form.Item required label="Confirmação" hasFeedback>
                 <Input
                   id="confirmPassword"
-                  placeholder="Enter your confirmPassword"
+                  placeholder="Confirme sua senha"
                   type="password"
                   value={values.confirmPassword}
                   onChange={handleChange}
